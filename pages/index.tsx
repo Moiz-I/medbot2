@@ -1,142 +1,73 @@
-import getConfig from 'next/config';
-
-import Layout from '@/components/Layout';
-
-const { publicRuntimeConfig } = getConfig();
-const { name } = publicRuntimeConfig.site;
+import Head from "next/head";
+import Image from "next/image";
+import { useState } from "react";
+import Medbot from "./medbot";
 
 const Home = () => {
+  const [meds, setMeds] = useState([]);
+
+  function handleClick() {
+    console.log("hi");
+  }
   return (
-    <Layout>
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="prose prose-blue mx-auto">
-            <h1>{name}</h1>
-            <p>Welcome to my Next.js + Tailwind CSS starter template.</p>
-
-            <h2>Features:</h2>
-            <ul>
-              <li>
-                Pre-configured <code>postcss.config.js</code> and{' '}
-                <code>tailwind.config.js</code>.
-              </li>
-              <li>
-                Markdown and CMS Content friendly with{' '}
-                <code>@tailwindcss/typography</code>.
-              </li>
-              <li>
-                Form styles with <code>@tailwindcss/forms</code>.
-              </li>
-              <li>
-                <code>global.css</code> that contains Tailwind CSS directives.
-              </li>
-              <li>
-                <code>{'<Layout />'}</code> component.
-              </li>
-            </ul>
-
-            <h2>Guides</h2>
-            <ul>
-              <li>
-                <a
-                  href="https://nextjs.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Next.js
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://tailwindcss.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Tailwind CSS
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/tailwindlabs/tailwindcss-typography"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  @tailwindcss/typography
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/tailwindlabs/tailwindcss-forms"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  @tailwindcss/forms
-                </a>
-              </li>
-            </ul>
-
-            <h2>Form control examples</h2>
-            <form action="" className="mb-0 space-y-6">
-              <div>
-                <label
-                  htmlFor="sample-email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Sample email input
-                </label>
-                <input
-                  type="email"
-                  name="sample-email"
-                  id="sample-email"
-                  placeholder="Enter your email address"
-                />
+    <div className="App flex min-h-screen flex-col items-center min-w-200">
+      {/* <div className=" bg-black">
+        <p className="random-text">test</p>
+        <button onClick={handleClick}>click me</button>
+      </div>
+      <div>{meds}</div> */}
+      <div className="flex h-full w-full max-w-[1728px] flex-1 flex-col px-6 lg:flex-row ">
+        <div className="parent ">
+          <div className="div">
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white p-5">
+              Welcome Back, Name!
+            </h1>
+          </div>
+          <div className="div2">
+            <div className="flex  w-full flex-col items-center justify-center gap-y-2">
+              <div className="w-[300px] rounded-xl border border-gray-200 bg-white py-4 px-2 shadow-md shadow-gray-100">
+                <div className="flex items-center justify-between px-2 text-base font-medium text-gray-700">
+                  <div>Medication</div>
+                </div>
+                <div className="mt-4">
+                  <div className="flex max-h-[400px] w-full flex-col overflow-y-scroll">
+                    <button className="group flex items-center gap-x-5 rounded-md px-2.5 py-2 transition-all duration-75 hover:bg-green-100">
+                      <div className="flex h-12 w-12 items-center rounded-lg bg-gray-200 text-black group-hover:bg-green-200">
+                        <span className="tag w-full text-center text-2xl font-medium text-gray-700 group-hover:text-green-900">
+                          💊
+                        </span>
+                      </div>
+                      <div className="flex flex-col items-start justify-between font-light text-gray-600">
+                        <p className="text-[15px]">Paracetamol</p>
+                        <span className="text-xs font-light text-gray-400">
+                          x1 pill
+                        </span>
+                      </div>
+                    </button>
+                    <button className="group flex items-center gap-x-5 rounded-md px-2.5 py-2 transition-all duration-75 hover:bg-green-100">
+                      <div className="flex h-12 w-12 items-center rounded-lg bg-gray-200 text-black group-hover:bg-green-200">
+                        <span className="tag w-full text-center text-2xl font-medium text-gray-700 group-hover:text-green-900">
+                          💊
+                        </span>
+                      </div>
+                      <div className="flex flex-col items-start justify-between font-light text-gray-600">
+                        <p className="text-[15px]">Ibuprofen</p>
+                        <span className="text-xs font-light text-gray-400">
+                          x2 pills
+                        </span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center">
-                <label htmlFor="sample-checkbox">
-                  <input
-                    type="checkbox"
-                    name="sample-checkbox"
-                    id="sample-checkbox"
-                  />
-                  <span className="ml-2">A sample checkbox</span>
-                </label>
-              </div>
-              <div className="flex items-center space-x-4">
-                <label htmlFor="sample-radio-1">
-                  <input type="radio" name="sample-radio" id="sample-radio-1" />
-                  <span className="ml-2">A sample radio number one</span>
-                </label>
-                <label htmlFor="sample-radio-2">
-                  <input type="radio" name="sample-radio" id="sample-radio-2" />
-                  <span className="ml-2">A sample radio number two</span>
-                </label>
-              </div>
-            </form>
-
-            <h2>Maintainer</h2>
-            <p>
-              This project template is maintained by{' '}
-              <a
-                href="https://earvinpiamonte.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                @earvinpiamonte
-              </a>{' '}
-              and publicly available on{' '}
-              <a
-                href="https://github.com/earvinpiamonte/nextjs-tailwindcss-template"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-              .
-            </p>
+            </div>
           </div>
         </div>
-      </section>
-    </Layout>
+        <div className="div3">
+          <Medbot />
+        </div>
+      </div>
+    </div>
   );
 };
 
