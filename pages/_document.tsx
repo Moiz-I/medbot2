@@ -17,7 +17,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* Favicons, cGoogle site verification and other common meta tags across the site. */}
+          {/* Favicons, Google site verification and other common meta tags across the site. */}
         </Head>
         <body>
           <Main />
